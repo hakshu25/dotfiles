@@ -1,3 +1,16 @@
+""""""""""""""""""""""""""""""
+" プラグインのセットアップ
+""""""""""""""""""""""""""""""
+call plug#begin('~/.vim/plugged')
+
+" ファイルオープンを便利に
+Plug 'Shougo/unite.vim'
+" Unite.vimで最近使ったファイルを表示できるようにする
+Plug 'Shougo/neomru.vim'
+
+call plug#end()
+""""""""""""""""""""""""""""""
+
 "エンコード
 set encoding=utf-8
 scriptencoding utf-8
