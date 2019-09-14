@@ -3,14 +3,47 @@
 """"""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 
-" ファイルオープンを便利に
-Plug 'Shougo/unite.vim'
-" Unite.vimで最近使ったファイルを表示できるようにする
-Plug 'Shougo/neomru.vim'
-
+" ファイルツリー
+Plug 'scrooloose/nerdtree'
+" Ruby endキーワード自動挿入
+Plug 'tpope/vim-endwise'
+" gcで複数行コメントアウト
+Plug 'tomtom/tcomment_vim'
+" インデントハイライト
+Plug 'nathanaelkane/vim-indent-guides'
+" 起動時にインデントハイライト自動化
+let g:indent_guides_enable_on_vim_startup = 1
+" ANSIカラー情報が埋め込まれているファイルを:AnsiEscコマンドでカラー化
+Plug 'vim-scripts/AnsiEsc.vim'
+" 行末半角スペース可視化
+" :FixWhitespeceで削除
+Plug 'bronson/vim-trailing-whitespace'
+" rails向け
+Plug 'tpope/vim-rails'
+" 検索用
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+" 補完
+" python3使用
+set pyxversion=3
+Plug 'lambdalisue/vim-pyenv'
+let g:python3_host_prog = expand('~/.pyenv/shims/python3')
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+inoremap <expr><Tab> pumvisible() ? "\<DOWN>" : "\<Tab>"
+inoremap <expr><S-Tab> pumvisible() ? "\<UP>" : "\<S-Tab>"))
+" Ruby補完
+Plug 'fishbullet/deoplete-ruby'
+" ヘルスチェック用
+Plug 'rhysd/vim-healthcheck'
 call plug#end()
 """"""""""""""""""""""""""""""
-
 "エンコード
 set encoding=utf-8
 scriptencoding utf-8
@@ -19,6 +52,8 @@ scriptencoding utf-8
 set ruler
 "行番号
 set number
+" コマンドライン行数
+set ch=5
 
 "シンタックス
 syntax enable
@@ -62,3 +97,72 @@ set clipboard=unnamed,autoselect
 
 "エスケープバインド
 inoremap <silent> jj <ESC>
+"NERDTree設定
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
+"カラースキーマ
+colorscheme desert
+" エディタウィンドウの末尾から2行目にステータスラインを常時表示させる
+set laststatus=2
+
+" http://inari.hatenablog.com/entry/2014/05/05/231307
+"""""""""""""""""""""""""""""
+" 全角スペースの表示
+""""""""""""""""""""""""""""""
+function! ZenkakuSpace()
+    highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
+endfunction
+
+if has('syntax')
+    augroup ZenkakuSpace
+        autocmd!
+        autocmd ColorScheme * call ZenkakuSpace()
+        autocmd VimEnter,WinEnter,BufRead * let w:m1=matchadd('ZenkakuSpace', '　')
+    augroup END
+    call ZenkakuSpace()
+endif
+""""""""""""""""""""""""""""""
+
+" https://sites.google.com/site/fudist/Home/vim-nihongo-ban/-vimrc-sample
+""""""""""""""""""""""""""""""
+" 挿入モード時、ステータスラインの色を変更
+""""""""""""""""""""""""""""""
+let g:hi_insert = 'highlight StatusLine guifg=darkblue guibg=darkyellow gui=none ctermfg=blue ctermbg=yellow cterm=none'
+
+if has('syntax')
+  augroup InsertHook
+    autocmd!
+    autocmd InsertEnter * call s:StatusLine('Enter')
+    autocmd InsertLeave * call s:StatusLine('Leave')
+  augroup END
+endif
+
+let s:slhlcmd = ''
+function! s:StatusLine(mode)
+  if a:mode == 'Enter'
+    silent! let s:slhlcmd = 'highlight ' . s:GetHighlight('StatusLine')
+    silent exec g:hi_insert
+  else
+    highlight clear StatusLine
+    silent exec s:slhlcmd
+  endif
+endfunction
+
+function! s:GetHighlight(hi)
+  redir => hl
+  exec 'highlight '.a:hi
+  redir END
+  let hl = substitute(hl, '[\r\n]', '', 'g')
+  let hl = substitute(hl, 'xxx', '', '')
+  return hl
+endfunction
+""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""
+" 最後のカーソル位置を復元する
+""""""""""""""""""""""""""""""
+if has("autocmd")
+    autocmd BufReadPost *
+    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+    \   exe "normal! g'\"" |
+    \ endif
+endif
+""""""""""""""""""""""""""""""
