@@ -42,6 +42,15 @@ inoremap <expr><S-Tab> pumvisible() ? "\<UP>" : "\<S-Tab>"))
 Plug 'fishbullet/deoplete-ruby'
 " ヘルスチェック用
 Plug 'rhysd/vim-healthcheck'
+" Goプラグイン
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" help日本語化
+Plug 'vim-jp/vimdoc-ja'
+" ヘルプの言語を日本語優先にする
+set helplang=ja
+" go補完
+Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh'}
+Plug 'deoplete-plugins/deoplete-go', { 'do': 'make' }
 call plug#end()
 """"""""""""""""""""""""""""""
 "エンコード
@@ -103,6 +112,8 @@ nnoremap <silent><C-e> :NERDTreeToggle<CR>
 colorscheme desert
 " エディタウィンドウの末尾から2行目にステータスラインを常時表示させる
 set laststatus=2
+" :makeでの自動保存
+set autowrite
 
 " http://inari.hatenablog.com/entry/2014/05/05/231307
 """""""""""""""""""""""""""""
