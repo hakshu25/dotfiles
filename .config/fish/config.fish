@@ -34,13 +34,15 @@ function fish_user_key_bindings
   bind \c] __select_ghq_cd
 end
 
+bind \cr reverse_history_search
+
 # alias
 
 alias playground="cd ~/Desktop/playground"
 alias ls='ls -G'
 alias la='ls -la'
 alias ll='ls -la'
-alias vi='vim' 
+alias vi='vim'
 alias gs='git status'
 alias gl='git log'
 alias gc='git commit'
