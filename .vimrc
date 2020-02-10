@@ -36,8 +36,15 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 let g:deoplete#enable_at_startup = 1
-inoremap <expr><Tab> pumvisible() ? "\<DOWN>" : "\<Tab>"
-inoremap <expr><S-Tab> pumvisible() ? "\<UP>" : "\<S-Tab>"))
+let g:deoplete#disable_auto_complete = 1
+
+" inoremap <expr><Tab> pumvisible() ? "\<DOWN>" : "\<Tab>"
+" inoremap <expr><S-Tab> pumvisible() ? "\<UP>" : "\<S-Tab>"))
+
+inoremap <silent><expr> <C-Space>
+\ pumvisible() ? "\<C-n>" :
+\ <SID>check_back_space() ? "\<TAB>" :
+\ deoplete#mappings#manual_complete()
 " Ruby補完
 Plug 'fishbullet/deoplete-ruby'
 " ヘルスチェック用
