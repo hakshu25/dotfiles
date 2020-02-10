@@ -38,13 +38,13 @@ endif
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#disable_auto_complete = 1
 
-" inoremap <expr><Tab> pumvisible() ? "\<DOWN>" : "\<Tab>"
-" inoremap <expr><S-Tab> pumvisible() ? "\<UP>" : "\<S-Tab>"))
+inoremap <expr><Tab> pumvisible() ? "\<DOWN>" : "\<Tab>"
+inoremap <expr><S-Tab> pumvisible() ? "\<UP>" : "\<S-Tab>"))
+let mapleader = ","
 
-inoremap <silent><expr> <C-Space>
-\ pumvisible() ? "\<C-n>" :
-\ <SID>check_back_space() ? "\<TAB>" :
-\ deoplete#mappings#manual_complete()
+" ,のデフォルトの機能は、\で使えるように退避
+noremap \  ,
+inoremap <silent><expr> <Leader>p deoplete#manual_complete()
 " Ruby補完
 Plug 'fishbullet/deoplete-ruby'
 " ヘルスチェック用
