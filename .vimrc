@@ -38,13 +38,14 @@ endif
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#disable_auto_complete = 1
 
-inoremap <expr><Tab> pumvisible() ? "\<DOWN>" : "\<Tab>"
-inoremap <expr><S-Tab> pumvisible() ? "\<UP>" : "\<S-Tab>"))
+" 補完手動設定
 let mapleader = ","
-
 " ,のデフォルトの機能は、\で使えるように退避
 noremap \  ,
 inoremap <silent><expr> <Leader>p deoplete#manual_complete()
+inoremap <expr><Tab> pumvisible() ? "\<DOWN>" : "\<Tab>"
+inoremap <expr><S-Tab> pumvisible() ? "\<UP>" : "\<S-Tab>"))
+
 " Ruby補完
 Plug 'fishbullet/deoplete-ruby'
 " ヘルスチェック用
@@ -90,8 +91,8 @@ set expandtab
 set smarttab
 
 "検索設定
-"インクリメンタルサーチしない
-set noincsearch
+"インクリメンタルサーチ
+set incsearch
 "ハイライト
 set hlsearch
 "大文字と小文字を区別しない
@@ -116,12 +117,13 @@ inoremap <silent> jj <ESC>
 "NERDTree設定
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 "カラースキーマ
-colorscheme desert
+colorscheme murphy
 " エディタウィンドウの末尾から2行目にステータスラインを常時表示させる
 set laststatus=2
 " :makeでの自動保存
 set autowrite
 
+" 参考
 " http://inari.hatenablog.com/entry/2014/05/05/231307
 """""""""""""""""""""""""""""
 " 全角スペースの表示
@@ -184,3 +186,19 @@ if has("autocmd")
     \ endif
 endif
 """"""""""""""""""""""""""""""
+
+" 括弧補完
+inoremap ( ()<ESC>i
+inoremap <expr> ) ClosePair(')')
+inoremap { {}<ESC>i
+inoremap <expr> } ClosePair('}')
+inoremap [ []<ESC>i
+inoremap <expr> ] ClosePair(']')
+
+function ClosePair(char)
+  if getline(".")[col('.') - 1] == a:char
+    return "\<Right>"
+  else
+    return a:char
+  endif
+endf
