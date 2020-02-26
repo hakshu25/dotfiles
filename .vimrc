@@ -56,9 +56,16 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'vim-jp/vimdoc-ja'
 " ヘルプの言語を日本語優先にする
 set helplang=ja
-" go補完
-Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh'}
-Plug 'deoplete-plugins/deoplete-go', { 'do': 'make' }
+" Language Server Protocol
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'lighttiger2505/deoplete-vim-lsp'
+let g:lsp_async_completion = 1
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" マルチカーソル
+Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 """"""""""""""""""""""""""""""
 "エンコード
