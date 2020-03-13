@@ -1,3 +1,4 @@
+set -g fish_user_paths "/usr/local/bin" $fish_user_paths
 set -g fish_user_paths "/usr/local/opt/mysql@5.7/bin" $fish_user_paths
 set -g theme_display_git yes
 set -g theme_use_abbreviated_branch_name yes
@@ -52,3 +53,5 @@ alias pull='git pull'
 alias gd='git diff'
 alias gb='git branch'
 direnv hook fish | source
+# set -g fish_user_paths "/usr/local/opt/openjdk/bin" $fish_user_paths
+# set -g fish_user_paths "/usr/local/opt/ncurses/bin" $fish_user_paths
