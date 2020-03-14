@@ -19,20 +19,18 @@ set PATH $PATH:$GOPATH/bin
 set DENO_DIR $HOME/deno
 
 # peco & ghq
-function __select_ghq_cd
-  commandline | read -l buffer
-  ghq list --full-path | \
-  fzf --query "$buffer" | \
-  read -l repository_path
-  if test -n "$repository_path"
-    commandline "cd ~/$repository_path"
-    commandline -f execute
+# ghq + peco
+function ghq_peco_repo
+  set selected_repository (ghq list -p | peco --query "$LBUFFER")
+  if [ -n "$selected_repository" ]
+    cd $selected_repository
+    echo " $selected_repository "
+    commandline -f repaint
   end
-  commandline -f repaint
 end
 
 function fish_user_key_bindings
-  bind \c] __select_ghq_cd
+  bind \c] ghq_peco_repo
 end
 
 bind \cr reverse_history_search
