@@ -28,26 +28,6 @@ Plug 'junegunn/fzf.vim'
 set pyxversion=3
 Plug 'lambdalisue/vim-pyenv'
 let g:python3_host_prog = expand('~/.pyenv/shims/python3')
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#disable_auto_complete = 1
-
-" 補完手動設定
-let mapleader = ","
-" ,のデフォルトの機能は、\で使えるように退避
-noremap \  ,
-inoremap <silent><expr> <Leader>p deoplete#manual_complete()
-inoremap <expr><Tab> pumvisible() ? "\<DOWN>" : "\<Tab>"
-inoremap <expr><S-Tab> pumvisible() ? "\<UP>" : "\<S-Tab>"))
-
-" Ruby補完
-Plug 'fishbullet/deoplete-ruby'
 " ヘルスチェック用
 Plug 'rhysd/vim-healthcheck'
 " Goプラグイン
@@ -60,7 +40,8 @@ set helplang=ja
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
-Plug 'lighttiger2505/deoplete-vim-lsp'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 let g:lsp_async_completion = 1
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -209,3 +190,4 @@ function ClosePair(char)
     return a:char
   endif
 endf
+
