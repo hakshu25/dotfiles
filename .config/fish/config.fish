@@ -50,6 +50,8 @@ alias push='git push'
 alias pull='git pull'
 alias gd='git diff'
 alias gb='git branch'
+alias gsw='git switch'
+alias gr='git restore'
 direnv hook fish | source
 # set -g fish_user_paths "/usr/local/opt/openjdk/bin" $fish_user_paths
 # set -g fish_user_paths "/usr/local/opt/ncurses/bin" $fish_user_paths
