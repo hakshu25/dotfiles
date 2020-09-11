@@ -56,3 +56,5 @@ direnv hook fish | source
 # set -g fish_user_paths "/usr/local/opt/openjdk/bin" $fish_user_paths
 # set -g fish_user_paths "/usr/local/opt/ncurses/bin" $fish_user_paths
 starship init fish | source
+
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc"
