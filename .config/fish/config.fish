@@ -52,6 +52,7 @@ alias gd='git diff'
 alias gb='git branch'
 alias gsw='git switch'
 alias gr='git restore'
+alias git-ghq='GHQ_ROOT=~/GitHub ghq'
 direnv hook fish | source
 # set -g fish_user_paths "/usr/local/opt/openjdk/bin" $fish_user_paths
 # set -g fish_user_paths "/usr/local/opt/ncurses/bin" $fish_user_paths
