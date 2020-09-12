@@ -23,11 +23,6 @@ Plug 'tpope/vim-rails'
 " 検索用
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-" 補完
-" python3使用
-set pyxversion=3
-Plug 'lambdalisue/vim-pyenv'
-let g:python3_host_prog = expand('~/.pyenv/shims/python3')
 " ヘルスチェック用
 Plug 'rhysd/vim-healthcheck'
 " Goプラグイン
