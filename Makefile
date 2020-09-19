@@ -1,4 +1,4 @@
-CANDIDATES := $(wildcard .??*)
+CANDIDATES := $(wildcard .??* Brewfile)
 EXCLUSIONS := .DS_Store .git .gitignore
 DOTFILES   := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
 
@@ -12,7 +12,7 @@ help:
 all: install init
 
 install:
-				@echo $(DOTFILES)
+				/bin/bash ./install.sh
 
 init:
 				@echo '==> Start to link dotfiles to home directory.'
