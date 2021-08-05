@@ -3,6 +3,12 @@ add_newline = false
 [directory]
 truncation_length = 10
 truncate_to_repo = false
+style = "cyan"
 
 [git_branch]
 style = "bold #4DF9B9"
+
+[git_status]
+stashed = ""
+modified = "*"
+conflicted = "CONFLICT"
