@@ -109,7 +109,7 @@ tap homebrew/cask
 cask android-studio
 cask coteditor
 cask docker
-cask font-cica
+cask font-fira-code-nerd-font
 cask google-chrome
 cask google-drive
 cask google-japanese-ime
