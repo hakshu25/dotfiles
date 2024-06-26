@@ -7,6 +7,9 @@ set -g theme_display_git_master_branch yes
 
 # init
 starship init fish | source
+if test -f (brew --prefix)/etc/brew-wrap.fish
+  source (brew --prefix)/etc/brew-wrap.fish
+end
 
 # alias
 alias playground="cd ~/Desktop/playground"
