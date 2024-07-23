@@ -1,7 +1,3 @@
-CANDIDATES := $(wildcard .??* Brewfile .config/* .config/fish/* .config/fish/functions/*)
-EXCLUSIONS := .DS_Store .git .gitignore .config .config/fish .config/fish/functions
-DOTFILES   := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
-
 .DEFAULT_GOAL := help
 
 help:
@@ -16,7 +12,9 @@ install:
 
 init:
 				@echo '==> Start to link dotfiles to home directory.'
-				@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
+				stow -v -t ~ zsh vim
+				stow -v -t ~/.config starship
+				stow -v -t ~/.config/fish fish
 				chsh -s /opt/homebrew/bin/fish
 
 install-fisher:
