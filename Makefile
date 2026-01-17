@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := help
 
 help:
-				@echo "init    => Create symlinks to home directory."
+				@echo "init    => Apply chezmoi dotfiles to home directory."
 				@echo "install => Install packages"
 				@echo "all => Run install and init"
 
@@ -11,10 +11,8 @@ install:
 				/bin/bash ./install.sh
 
 init:
-				@echo '==> Start to link dotfiles to home directory.'
-				stow -v -t ~ zsh vim
-				stow -v -t ~/.config starship
-				stow -v -t ~/.config/fish fish
+				@echo '==> Applying dotfiles with chezmoi...'
+				chezmoi apply
 				chsh -s /opt/homebrew/bin/fish
 
 install-fisher:
