@@ -1,0 +1,15 @@
+theme = Atom One Dark
+font-family = "FiraCode Nerd Font Mono Reg"
+font-size = 18
+font-feature = -dlig
+font-style-bold = false
+font-style-italic = false
+font-style-bold-italic = false
+font-thicken = true
+font-thicken-strength = 1
+adjust-cell-width = -1
+adjust-cell-height = 2
+alpha-blending = linear
+shell-integration-features = no-cursor
+cursor-style = block
+cursor-style-blink = false
