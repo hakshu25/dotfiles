@@ -62,7 +62,6 @@ make install-vim-plug
 | `dot_zshenv` | Zsh環境変数 |
 | `dot_claude/` | Claude Code設定 |
 | `Brewfile` | Homebrewパッケージリスト |
-| `com.googlecode.iterm2.plist` | iTerm2設定 |
 
 ## よく使うchezmoiコマンド
 
@@ -91,7 +90,6 @@ chezmoi cd
 
 ### ターミナル
 - Ghostty
-- iTerm2
 
 ### エディタ
 - Neovim
