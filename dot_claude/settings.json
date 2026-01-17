@@ -1,0 +1,19 @@
+{
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "terminal-notifier -title 'Claude Code' -message '呼んでるよ〜' -sound default"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+     "type": "command",
+       "command": "~/.claude/statusline.js"
+  }
+}
