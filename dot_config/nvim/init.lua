@@ -1,3 +1,7 @@
+-- luarocks path for image.nvim
+package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?/init.lua"
+package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?.lua"
+package.cpath = package.cpath .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/lib/lua/5.1/?.so"
 
 -- Set <space> as the leader key
 -- See `:help mapleader`
@@ -178,6 +182,11 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find f
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+
+-- Git関連
+vim.keymap.set('n', '<leader>gc', builtin.git_commits, { desc = 'Git commits' })
+vim.keymap.set('n', '<leader>gf', builtin.git_bcommits, { desc = 'Git file history' })
+vim.keymap.set('n', '<leader>gs', builtin.git_status, { desc = 'Git status' })
 
 require('lualine').setup()
 
