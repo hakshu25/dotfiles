@@ -76,8 +76,10 @@
 ❌ 過度に感情的な表現
 
 # 設定ファイルの変更について
-- `~/.claude/` 配下の設定ファイル（CLAUDE.md、settings.json、skillsなど）を変更・追加する際は、必ず chezmoi のソースディレクトリ（`~/.local/share/chezmoi/`）側を編集してから `chezmoi apply` を実行してください
-- 直接 `~/.claude/` を編集しないでください
+- dotfilesはchezmoiで管理されています（ソースディレクトリ: `~/.local/share/chezmoi/`）
+- 設定ファイルを変更・追加する際は、必ず chezmoi のソースディレクトリ側を編集してから `chezmoi apply` を実行してください
+- 直接ホームディレクトリ配下のファイルを編集しないでください
+- 対象の例: `~/.claude/`、`~/.config/`、`~/.zshrc`、`~/.zshenv` など
 
 # Git について
 - commit メッセージは conventional commits のルールに準拠してください。詳しくは以下の仕様を参照してください。
