@@ -2,6 +2,8 @@ fish_add_path /usr/local/bin
 fish_add_path /opt/homebrew/bin
 fish_add_path $HOME/.deno/bin
 fish_add_path $HOME/.local/bin
+# for obsidian cli
+fish_add_path /Applications/Obsidian.app/Contents/MacOS
 set -g theme_display_git yes
 set -g theme_use_abbreviated_branch_name yes
 set -g theme_display_git_master_branch yes
@@ -29,3 +31,4 @@ alias gd='git diff'
 alias gb='git branch'
 alias gsw='git switch'
 alias gr='git restore'
+alias cc='claude --dangerously-skip-permissions'

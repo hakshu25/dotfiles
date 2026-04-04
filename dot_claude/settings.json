@@ -13,7 +13,22 @@
     ]
   },
   "statusLine": {
-     "type": "command",
-       "command": "~/.claude/statusline.js"
+    "type": "command",
+    "command": "~/.claude/statusline.js"
+  },
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
+    "code-review@claude-plugins-official": true,
+    "figma@claude-plugins-official": true,
+    "Notion@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": true
+  },
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "enableAllProjectMcpServers": false,
+  "permissions": {
+    "disableBypassPermissionsMode": "disable"
   }
 }
