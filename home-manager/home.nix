@@ -39,6 +39,14 @@
     pkgs.starship
     pkgs.tree
     pkgs.vim
+    pkgs.chezmoi
+    pkgs.delta
+    pkgs.just
+    pkgs.lazygit
+    pkgs.neovim
+    pkgs.ripgrep
+    pkgs.terminal-notifier
+    pkgs.zellij
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
