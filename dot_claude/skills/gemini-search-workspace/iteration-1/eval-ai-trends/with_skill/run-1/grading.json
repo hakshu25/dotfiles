@@ -1,0 +1,8 @@
+{
+  "expectations": [
+    {"text": "geminiコマンドを実行している", "passed": true, "evidence": "result.mdに gemini -p が明記されている"},
+    {"text": "AIエージェント系ツールの具体的な名前・サービスが含まれている", "passed": true, "evidence": "LangGraph、CrewAI、Claude Code、n8n、smolagents等多数列挙"},
+    {"text": "2026年時点の情報が含まれている", "passed": true, "evidence": "Claude Code GA、OpenAI Operator統合、GPT-5世代など2026年の動向が含まれる"}
+  ],
+  "summary": {"passed": 3, "failed": 0, "total": 3, "pass_rate": 1.0}
+}

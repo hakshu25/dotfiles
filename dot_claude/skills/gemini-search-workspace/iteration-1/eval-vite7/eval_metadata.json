@@ -1,0 +1,19 @@
+{
+  "eval_id": 1,
+  "eval_name": "vite7-changes",
+  "prompt": "Vite 7の主な変更点を調べて",
+  "assertions": [
+    {
+      "text": "geminiコマンドを実行している（`gemini -p`が出力に含まれる）",
+      "check": "with_skill"
+    },
+    {
+      "text": "Vite 7に関する具体的な情報（バージョン番号・機能名・変更点）が含まれている",
+      "check": "both"
+    },
+    {
+      "text": "with_skillの結果がwithout_skillより新しい・詳細な情報を含んでいる",
+      "check": "comparison"
+    }
+  ]
+}

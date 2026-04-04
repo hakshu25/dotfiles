@@ -1,0 +1,8 @@
+{
+  "expectations": [
+    {"text": "geminiコマンドを実行している", "passed": true, "evidence": "result.mdに gemini -p が明記されている"},
+    {"text": "TypeScript 5.8の具体的な機能名が複数列挙されている", "passed": true, "evidence": "return文チェック、--erasableSyntaxOnly、--module node18、ESM require()サポート等5項目以上"},
+    {"text": "without_skillより正確・詳細である", "passed": true, "evidence": "Import Attributesへの移行、計算されたプロパティ名の保存など追加情報を含む"}
+  ],
+  "summary": {"passed": 3, "failed": 0, "total": 3, "pass_rate": 1.0}
+}

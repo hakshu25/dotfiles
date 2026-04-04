@@ -1,0 +1,8 @@
+{
+  "expectations": [
+    {"text": "geminiコマンドを実行している", "passed": false, "evidence": "geminiコマンドは使用していない。内部知識のみで回答"},
+    {"text": "Vite 7の具体的な情報（リリース日・機能名・Breaking Changes）が含まれている", "passed": true, "evidence": "基本情報は含まれるが「確認が取れていない部分もある」と注記あり"},
+    {"text": "without_skillより詳細・正確な情報を含んでいる", "passed": false, "evidence": "比較対象（with_skill側が優れているため不合格）"}
+  ],
+  "summary": {"passed": 1, "failed": 2, "total": 3, "pass_rate": 0.33}
+}

@@ -1,0 +1,19 @@
+{
+  "eval_id": 2,
+  "eval_name": "ai-agent-trends",
+  "prompt": "最近のAIエージェント系ツールのトレンドを教えて",
+  "assertions": [
+    {
+      "text": "geminiコマンドを実行している（`gemini -p`が出力に含まれる）",
+      "check": "with_skill"
+    },
+    {
+      "text": "AIエージェント系ツールの具体的な名前・サービスが含まれている",
+      "check": "both"
+    },
+    {
+      "text": "with_skillの結果に2026年時点の情報が含まれている",
+      "check": "with_skill"
+    }
+  ]
+}

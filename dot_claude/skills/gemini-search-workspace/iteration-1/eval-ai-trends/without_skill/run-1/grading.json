@@ -1,0 +1,8 @@
+{
+  "expectations": [
+    {"text": "geminiコマンドを実行している", "passed": false, "evidence": "geminiコマンドは使用していない。内部知識（カットオフ2025年8月）のみで回答"},
+    {"text": "AIエージェント系ツールの具体的な名前・サービスが含まれている", "passed": true, "evidence": "多数列挙されているが情報は2025年8月時点"},
+    {"text": "2026年時点の情報が含まれている", "passed": false, "evidence": "カットオフが2025年8月のため2026年の情報は含まれない"}
+  ],
+  "summary": {"passed": 1, "failed": 2, "total": 3, "pass_rate": 0.33}
+}

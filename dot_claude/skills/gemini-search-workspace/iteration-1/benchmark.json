@@ -1,0 +1,263 @@
+{
+  "metadata": {
+    "skill_name": "gemini-search",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-03-07T00:35:45Z",
+    "evals_run": [
+      1,
+      2,
+      3
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 3,
+        "failed": 0,
+        "total": 3,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "gemini\u30b3\u30de\u30f3\u30c9\u3092\u5b9f\u884c\u3057\u3066\u3044\u308b",
+          "passed": true,
+          "evidence": "result.md\u306b gemini -p \u304c\u660e\u8a18\u3055\u308c\u3066\u3044\u308b"
+        },
+        {
+          "text": "AI\u30a8\u30fc\u30b8\u30a7\u30f3\u30c8\u7cfb\u30c4\u30fc\u30eb\u306e\u5177\u4f53\u7684\u306a\u540d\u524d\u30fb\u30b5\u30fc\u30d3\u30b9\u304c\u542b\u307e\u308c\u3066\u3044\u308b",
+          "passed": true,
+          "evidence": "LangGraph\u3001CrewAI\u3001Claude Code\u3001n8n\u3001smolagents\u7b49\u591a\u6570\u5217\u6319"
+        },
+        {
+          "text": "2026\u5e74\u6642\u70b9\u306e\u60c5\u5831\u304c\u542b\u307e\u308c\u3066\u3044\u308b",
+          "passed": true,
+          "evidence": "Claude Code GA\u3001OpenAI Operator\u7d71\u5408\u3001GPT-5\u4e16\u4ee3\u306a\u30692026\u5e74\u306e\u52d5\u5411\u304c\u542b\u307e\u308c\u308b"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 3,
+        "failed": 0,
+        "total": 3,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "gemini\u30b3\u30de\u30f3\u30c9\u3092\u5b9f\u884c\u3057\u3066\u3044\u308b",
+          "passed": true,
+          "evidence": "result.md\u306b gemini -p \u304c\u660e\u8a18\u3055\u308c\u3066\u3044\u308b"
+        },
+        {
+          "text": "TypeScript 5.8\u306e\u5177\u4f53\u7684\u306a\u6a5f\u80fd\u540d\u304c\u8907\u6570\u5217\u6319\u3055\u308c\u3066\u3044\u308b",
+          "passed": true,
+          "evidence": "return\u6587\u30c1\u30a7\u30c3\u30af\u3001--erasableSyntaxOnly\u3001--module node18\u3001ESM require()\u30b5\u30dd\u30fc\u30c8\u7b495\u9805\u76ee\u4ee5\u4e0a"
+        },
+        {
+          "text": "without_skill\u3088\u308a\u6b63\u78ba\u30fb\u8a73\u7d30\u3067\u3042\u308b",
+          "passed": true,
+          "evidence": "Import Attributes\u3078\u306e\u79fb\u884c\u3001\u8a08\u7b97\u3055\u308c\u305f\u30d7\u30ed\u30d1\u30c6\u30a3\u540d\u306e\u4fdd\u5b58\u306a\u3069\u8ffd\u52a0\u60c5\u5831\u3092\u542b\u3080"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 3,
+        "failed": 0,
+        "total": 3,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "gemini\u30b3\u30de\u30f3\u30c9\u3092\u5b9f\u884c\u3057\u3066\u3044\u308b",
+          "passed": true,
+          "evidence": "result.md\u306b gemini -p \u304c\u660e\u8a18\u3055\u308c\u3066\u3044\u308b"
+        },
+        {
+          "text": "Vite 7\u306e\u5177\u4f53\u7684\u306a\u60c5\u5831\uff08\u30ea\u30ea\u30fc\u30b9\u65e5\u30fb\u6a5f\u80fd\u540d\u30fbBreaking Changes\uff09\u304c\u542b\u307e\u308c\u3066\u3044\u308b",
+          "passed": true,
+          "evidence": "\u30ea\u30ea\u30fc\u30b9\u65e52024\u5e7411\u670812\u65e5\u3001Environment API\u5b89\u5b9a\u5316\u3001Rollup 4\u5bfe\u5fdc\u3001Node.js\u8981\u4ef6\u5909\u66f4\u306a\u3069"
+        },
+        {
+          "text": "without_skill\u3088\u308a\u8a73\u7d30\u30fb\u6b63\u78ba\u306a\u60c5\u5831\u3092\u542b\u3093\u3067\u3044\u308b",
+          "passed": true,
+          "evidence": "\u5177\u4f53\u7684\u306a\u30ea\u30ea\u30fc\u30b9\u65e5\u30fbBreaking Changes\u3092\u660e\u8a18\u3002without_skill\u306f\u4e0d\u78ba\u5b9f\u6027\u3092\u8a8d\u3081\u3066\u3044\u308b"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.33,
+        "passed": 1,
+        "failed": 2,
+        "total": 3,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "gemini\u30b3\u30de\u30f3\u30c9\u3092\u5b9f\u884c\u3057\u3066\u3044\u308b",
+          "passed": false,
+          "evidence": "gemini\u30b3\u30de\u30f3\u30c9\u306f\u4f7f\u7528\u3057\u3066\u3044\u306a\u3044\u3002\u5185\u90e8\u77e5\u8b58\uff08\u30ab\u30c3\u30c8\u30aa\u30d52025\u5e748\u6708\uff09\u306e\u307f\u3067\u56de\u7b54"
+        },
+        {
+          "text": "AI\u30a8\u30fc\u30b8\u30a7\u30f3\u30c8\u7cfb\u30c4\u30fc\u30eb\u306e\u5177\u4f53\u7684\u306a\u540d\u524d\u30fb\u30b5\u30fc\u30d3\u30b9\u304c\u542b\u307e\u308c\u3066\u3044\u308b",
+          "passed": true,
+          "evidence": "\u591a\u6570\u5217\u6319\u3055\u308c\u3066\u3044\u308b\u304c\u60c5\u5831\u306f2025\u5e748\u6708\u6642\u70b9"
+        },
+        {
+          "text": "2026\u5e74\u6642\u70b9\u306e\u60c5\u5831\u304c\u542b\u307e\u308c\u3066\u3044\u308b",
+          "passed": false,
+          "evidence": "\u30ab\u30c3\u30c8\u30aa\u30d5\u304c2025\u5e748\u6708\u306e\u305f\u30812026\u5e74\u306e\u60c5\u5831\u306f\u542b\u307e\u308c\u306a\u3044"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.33,
+        "passed": 1,
+        "failed": 2,
+        "total": 3,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "gemini\u30b3\u30de\u30f3\u30c9\u3092\u5b9f\u884c\u3057\u3066\u3044\u308b",
+          "passed": false,
+          "evidence": "gemini\u30b3\u30de\u30f3\u30c9\u306f\u4f7f\u7528\u3057\u3066\u3044\u306a\u3044\u3002\u5185\u90e8\u77e5\u8b58\u306e\u307f\u3067\u56de\u7b54"
+        },
+        {
+          "text": "TypeScript 5.8\u306e\u5177\u4f53\u7684\u306a\u6a5f\u80fd\u540d\u304c\u8907\u6570\u5217\u6319\u3055\u308c\u3066\u3044\u308b",
+          "passed": true,
+          "evidence": "--erasableSyntaxOnly\u3001--module node20\u3001\u6761\u4ef6\u578b\u306einfer\u63a8\u8ad6\u6539\u5584\u7b49\u5217\u6319\u3055\u308c\u3066\u3044\u308b"
+        },
+        {
+          "text": "without_skill\u3088\u308a\u6b63\u78ba\u30fb\u8a73\u7d30\u3067\u3042\u308b",
+          "passed": false,
+          "evidence": "\u6bd4\u8f03\u5bfe\u8c61\uff08with_skill\u5074\u304c\u512a\u308c\u3066\u3044\u308b\u305f\u3081\u4e0d\u5408\u683c\uff09"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.33,
+        "passed": 1,
+        "failed": 2,
+        "total": 3,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "gemini\u30b3\u30de\u30f3\u30c9\u3092\u5b9f\u884c\u3057\u3066\u3044\u308b",
+          "passed": false,
+          "evidence": "gemini\u30b3\u30de\u30f3\u30c9\u306f\u4f7f\u7528\u3057\u3066\u3044\u306a\u3044\u3002\u5185\u90e8\u77e5\u8b58\u306e\u307f\u3067\u56de\u7b54"
+        },
+        {
+          "text": "Vite 7\u306e\u5177\u4f53\u7684\u306a\u60c5\u5831\uff08\u30ea\u30ea\u30fc\u30b9\u65e5\u30fb\u6a5f\u80fd\u540d\u30fbBreaking Changes\uff09\u304c\u542b\u307e\u308c\u3066\u3044\u308b",
+          "passed": true,
+          "evidence": "\u57fa\u672c\u60c5\u5831\u306f\u542b\u307e\u308c\u308b\u304c\u300c\u78ba\u8a8d\u304c\u53d6\u308c\u3066\u3044\u306a\u3044\u90e8\u5206\u3082\u3042\u308b\u300d\u3068\u6ce8\u8a18\u3042\u308a"
+        },
+        {
+          "text": "without_skill\u3088\u308a\u8a73\u7d30\u30fb\u6b63\u78ba\u306a\u60c5\u5831\u3092\u542b\u3093\u3067\u3044\u308b",
+          "passed": false,
+          "evidence": "\u6bd4\u8f03\u5bfe\u8c61\uff08with_skill\u5074\u304c\u512a\u308c\u3066\u3044\u308b\u305f\u3081\u4e0d\u5408\u683c\uff09"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.33,
+        "stddev": 0.0,
+        "min": 0.33,
+        "max": 0.33
+      },
+      "time_seconds": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.67",
+      "time_seconds": "+0.0",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

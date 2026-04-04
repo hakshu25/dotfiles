@@ -1,0 +1,8 @@
+{
+  "expectations": [
+    {"text": "geminiコマンドを実行している", "passed": false, "evidence": "geminiコマンドは使用していない。内部知識のみで回答"},
+    {"text": "TypeScript 5.8の具体的な機能名が複数列挙されている", "passed": true, "evidence": "--erasableSyntaxOnly、--module node20、条件型のinfer推論改善等列挙されている"},
+    {"text": "without_skillより正確・詳細である", "passed": false, "evidence": "比較対象（with_skill側が優れているため不合格）"}
+  ],
+  "summary": {"passed": 1, "failed": 2, "total": 3, "pass_rate": 0.33}
+}

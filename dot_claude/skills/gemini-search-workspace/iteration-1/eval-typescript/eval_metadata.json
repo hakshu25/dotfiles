@@ -1,0 +1,19 @@
+{
+  "eval_id": 3,
+  "eval_name": "typescript58-features",
+  "prompt": "TypeScript 5.8の新機能は？",
+  "assertions": [
+    {
+      "text": "geminiコマンドを実行している（`gemini -p`が出力に含まれる）",
+      "check": "with_skill"
+    },
+    {
+      "text": "TypeScript 5.8の具体的な機能名が複数列挙されている",
+      "check": "both"
+    },
+    {
+      "text": "with_skillの結果がwithout_skillより正確・詳細である",
+      "check": "comparison"
+    }
+  ]
+}

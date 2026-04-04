@@ -1,0 +1,23 @@
+{
+  "skill_name": "gemini-search",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Vite 7の主な変更点を調べて",
+      "expected_output": "Vite 7の最新の変更点・新機能が具体的に記載されている",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "最近のAIエージェント系ツールのトレンドを教えて",
+      "expected_output": "2026年時点の最新AIエージェントツールのトレンドが記載されている",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "TypeScript 5.8の新機能は？",
+      "expected_output": "TypeScript 5.8の具体的な新機能が列挙されている",
+      "files": []
+    }
+  ]
+}

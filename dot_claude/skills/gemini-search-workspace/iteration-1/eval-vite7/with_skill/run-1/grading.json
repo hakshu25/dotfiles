@@ -1,0 +1,8 @@
+{
+  "expectations": [
+    {"text": "geminiコマンドを実行している", "passed": true, "evidence": "result.mdに gemini -p が明記されている"},
+    {"text": "Vite 7の具体的な情報（リリース日・機能名・Breaking Changes）が含まれている", "passed": true, "evidence": "リリース日2024年11月12日、Environment API安定化、Rollup 4対応、Node.js要件変更など"},
+    {"text": "without_skillより詳細・正確な情報を含んでいる", "passed": true, "evidence": "具体的なリリース日・Breaking Changesを明記。without_skillは不確実性を認めている"}
+  ],
+  "summary": {"passed": 3, "failed": 0, "total": 3, "pass_rate": 1.0}
+}
