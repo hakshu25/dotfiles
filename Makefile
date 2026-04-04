@@ -5,10 +5,14 @@ help:
 				@echo "install => Install packages"
 				@echo "all => Run install and init"
 
-all: install init install-fisher install-vim-plug
+all: install install-nix init install-fisher install-vim-plug
 
 install:
 				/bin/bash ./install.sh
+
+install-nix:
+				@echo '==> Running home-manager switch...'
+				home-manager switch --flake .
 
 init:
 				@echo '==> Applying dotfiles with chezmoi...'
