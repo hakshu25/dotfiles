@@ -12,3 +12,6 @@ style = "bold #4DF9B9"
 stashed = ""
 modified = "*"
 conflicted = "CONFLICT"
+
+[cmd_duration]
+disabled = true
