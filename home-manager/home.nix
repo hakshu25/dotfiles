@@ -47,6 +47,13 @@
     pkgs.ripgrep
     pkgs.terminal-notifier
     pkgs.zellij
+    pkgs.eza
+    pkgs.fd
+    pkgs.sd
+    pkgs.procs
+    pkgs.bottom
+    pkgs.tokei
+    pkgs.hyperfine
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
