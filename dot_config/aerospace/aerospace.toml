@@ -202,6 +202,42 @@ alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
+# ワークスペースをモニターに割り当て
+# 数字(1-9): メインディスプレイ、英字(A-Z): サブディスプレイ
+# See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
+[workspace-to-monitor-force-assignment]
+1 = 'main'
+2 = 'main'
+3 = 'main'
+4 = 'main'
+5 = 'main'
+6 = 'main'
+7 = 'main'
+8 = 'main'
+9 = 'main'
+A = 'secondary'
+B = 'secondary'
+C = 'secondary'
+D = 'secondary'
+E = 'secondary'
+F = 'secondary'
+G = 'secondary'
+I = 'secondary'
+M = 'secondary'
+N = 'secondary'
+O = 'secondary'
+P = 'secondary'
+Q = 'secondary'
+R = 'secondary'
+S = 'secondary'
+T = 'secondary'
+U = 'secondary'
+V = 'secondary'
+W = 'secondary'
+X = 'secondary'
+Y = 'secondary'
+Z = 'secondary'
+
 # ghosttyでタブを新規に開くとsplitし続けるため
 [[on-window-detected]]
 if.app-id="com.mitchellh.ghostty"
