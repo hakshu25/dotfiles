@@ -45,6 +45,7 @@
     pkgs.lazygit
     pkgs.neovim
     pkgs.ripgrep
+    pkgs.rtk
     pkgs.terminal-notifier
     pkgs.zellij
     pkgs.eza
