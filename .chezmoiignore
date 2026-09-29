@@ -1,0 +1,9 @@
+# Repository files that should not be deployed to $HOME
+README.md
+Makefile
+install.sh
+Brewfile
+flake.nix
+flake.lock
+home-manager
+com.googlecode.iterm2.plist
