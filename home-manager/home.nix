@@ -30,6 +30,7 @@
     pkgs.gh
     pkgs.ghq
     pkgs.git
+    pkgs.gitleaks
     pkgs.gnupg
     pkgs.jq
     pkgs.mise

@@ -17,6 +17,7 @@ install-nix:
 init:
 				@echo '==> Applying dotfiles with chezmoi...'
 				chezmoi apply
+				git config core.hooksPath .githooks
 				chsh -s /opt/homebrew/bin/fish
 
 install-fisher:
