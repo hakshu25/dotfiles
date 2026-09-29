@@ -58,6 +58,39 @@
     "Notion@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true
   },
-  "effortLevel": "xhigh",
-  "tui": "fullscreen"
+  "tui": "fullscreen",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "high"
+    }
+  },
+  "autoMode": {
+    "environment": [
+      "### Org-wide",
+      "**Organization**: None configured",
+      "**Cloud provider(s)**: None configured",
+      "**Repository visibility**: assume private unless the remote host and repo name indicate otherwise, or a visibility check in the transcript shows public",
+      "**Internal sharing / snippet hosting**: None configured — treat public paste/gist services as outside the trust boundary",
+      "**Secrets management**: None configured",
+      "**Default / protected branches**: not queryable (no remote/org derivable from this checkout — this is the user's dotfiles home directory, not a project repo with a resolvable origin)",
+      "**CI/CD deploy targets**: None configured",
+      "**Network posture**: None configured",
+      "**Host containment**: None configured — assume Claude Code runs on an ordinary developer machine with open internet",
+      "**Source control**: The trusted repo (github.com/hakshu25/dotfiles, per CLAUDE.md and skill docs) and its remote only — no additional orgs configured",
+      "**Trusted internal domains**: None configured",
+      "**Trusted cloud buckets**: None configured — the config-scan names npm-registry-packages-npm-production and npm-registry-packages are generic public npm-registry-mirror cache artifacts (pnpm/yarn store naming), not org-identifying bucket names, and are not corroborated by any usage-section bucket mention; not adopted",
+      "**Key internal services**: None configured",
+      "**Internal package registry**: None configured",
+      "**Sensitive data locations & audiences**: any file or store holding personal data, confidential business data, credentials, regulated data, or similarly sensitive material; preserve exact handles when known and share only with audiences cleared at the [named+specifics] bar",
+      "**Data retention / declassification**: None configured",
+      "**Sensitive remote targets**: any namespace, host, or container whose name carries `prod` or `production` as a whole word or name segment",
+      "**Protected deployment namespaces / environments**: None configured — fall back to the Sensitive remote targets heuristic",
+      "**Protected IaC scopes**: IAM, RBAC, networking, quota, and node-pool resources; anything whose name or tag carries `prod` or `production` as a whole word or name segment",
+      "### User-specific",
+      "**Primary use of Claude Code**: personal dotfiles/system management (chezmoi-managed configs, Nix/home-manager package management, Obsidian note-taking and blog-drafting workflows) — lean personal/hobby per stated posture",
+      "**Trusted repo**: ~ (this checkout has no tracked files and no remote configured); per repo-authored docs (unverified provenance, not gh-confirmed) the user's actual working repos are github.com/hakshu25/dotfiles (chezmoi source at ~/.local/share/chezmoi/) and ~/workspace/hakshu.blog",
+      "**Org-specific CLIs**: chezmoi, home-manager/nix, gws (Google Workspace CLI) — routine under this user's dotfiles/Obsidian workflow",
+      "routine under hakshu/ prefix: chezmoi apply/add, home-manager switch, nix flake update operations confined to ~/.local/share/chezmoi/ and ~/workspace/hakshu.blog"
+    ]
+  }
 }
