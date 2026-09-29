@@ -1,11 +1,7 @@
-# This is Git's per-user configuration file.
 [user]
 	name = hakshu25
 	email = hakshu25@gmail.com
 	signingkey = DC55BE4F3FE62FBD
-# Please adapt and uncomment the following lines:
-#	name = hakshu25
-#	email = hakshu25@gmail.com
 [init]
 	defaultBranch = main
 
