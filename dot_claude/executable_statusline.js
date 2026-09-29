@@ -93,9 +93,9 @@ process.stdin.on('end', () => {
     // 3. Model name
     const model = data.model?.display_name || data.model?.id || '';
 
-    // 4. Extended thinking indicator
-    const isThinking = !!(data.thinking?.enabled);
-    const thinkingStr = isThinking ? ` [thinking]` : '';
+    // 4. Reasoning effort (absent when the model doesn't support effort)
+    const effort = data.effort?.level;
+    const effortStr = effort ? ` [${effort}]` : '';
 
     // 5. Rate limit progress bars
     let bars = '';
@@ -129,7 +129,7 @@ process.stdin.on('end', () => {
       `${CYAN}${cwdDisplay}${RESET}`,
       gitInfo,
       model ? ` ${model}` : '',
-      thinkingStr,
+      effortStr,
       bars,
       weather ? ` ${weather}` : '',
       ` ${time}`
