@@ -1,16 +1,14 @@
 # by hakshu
 
 function peco_git_checkout
-   git branch -a | peco | tr -d ' ' | read branch
-   echo $branch
-   if [ $branch ]
-       if contains $branch "remotes/"
-           set -l b (echo $branch | awk -F'/' '{print $3}')
-           git checkout -b $b $branch
+   set -l branch (git branch -a --format='%(refname)' | string match -v 'refs/remotes/*/HEAD' | string replace -r '^refs/(heads|remotes)/' '' | peco)
+   if test -n "$branch"
+       if git show-ref --verify --quiet refs/remotes/$branch
+           # origin/feat/foo -> track it as local feat/foo
+           git switch --track $branch
        else
-           git checkout $branch
+           git switch $branch
        end
    end
    commandline -f repaint
 end
-

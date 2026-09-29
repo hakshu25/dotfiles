@@ -1,20 +1,28 @@
 #!/bin/bash
+set -eu
+
+cd "$(dirname "$0")"
 
 # Homebrew
-brew -v
-if [ ! $? ]; then
-  curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh
+if ! command -v brew &> /dev/null; then
+  echo "==> Installing Homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+if ! command -v brew-file &> /dev/null; then
+  brew install rcmdnk/file/brew-file
 fi
 brew file install -f ./Brewfile
 
 # Nix
 if ! command -v nix &> /dev/null; then
   echo "==> Installing Nix..."
-  curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+  curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --no-confirm
+  # shellcheck disable=SC1091
+  . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
 fi
 
 # home-manager
-if command -v nix &> /dev/null; then
-  echo "==> Running home-manager switch..."
-  nix run home-manager/master -- switch --flake "$(dirname "$0")"
-fi
+echo "==> Running home-manager switch..."
+nix run home-manager/master -- switch --flake .
