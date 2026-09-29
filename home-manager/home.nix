@@ -1,97 +1,53 @@
 { config, pkgs, ... }:
 
 {
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
   home.username = "hakshu";
   home.homeDirectory = "/Users/hakshu";
 
-  # This value determines the Home Manager release that your configuration is
-  # compatible with. This helps avoid breakage when a new Home Manager release
-  # introduces backwards incompatible changes.
-  #
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
-  home.stateVersion = "26.05"; # Please read the comment before changing.
+  # Do not change this even when updating Home Manager.
+  # Read the Home Manager release notes before bumping it.
+  home.stateVersion = "26.05";
 
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
-  home.packages = [
-    # CLI tools
-    pkgs.act
-    pkgs.actionlint
-    pkgs.awscli2
-    pkgs.bat
-    pkgs.coreutils
-    pkgs.direnv
-    pkgs.dive
-    pkgs.fzf
-    pkgs.gh
-    pkgs.ghq
-    pkgs.git
-    pkgs.gitleaks
-    pkgs.gnupg
-    pkgs.jq
-    pkgs.mise
-    pkgs.mkcert
-    pkgs.nkf
-    pkgs.peco
-    pkgs.starship
-    pkgs.tree
-    pkgs.vim
-    pkgs.chezmoi
-    pkgs.delta
-    pkgs.just
-    pkgs.lazygit
-    pkgs.neovim
-    pkgs.ripgrep
-    pkgs.rtk
-    pkgs.terminal-notifier
-    pkgs.zellij
-    pkgs.eza
-    pkgs.fd
-    pkgs.sd
-    pkgs.procs
-    pkgs.bottom
-    pkgs.tokei
-    pkgs.hyperfine
+  # CLI tools. Language runtimes are managed by mise, not here.
+  home.packages = with pkgs; [
+    act
+    actionlint
+    awscli2
+    bat
+    bottom
+    chezmoi
+    coreutils
+    delta
+    direnv
+    dive
+    eza
+    fd
+    fzf
+    gh
+    ghq
+    git
+    gitleaks
+    gnupg
+    hyperfine
+    jq
+    just
+    lazygit
+    mise
+    mkcert
+    neovim
+    nkf
+    peco
+    procs
+    ripgrep
+    rtk
+    sd
+    starship
+    terminal-notifier
+    tokei
+    tree
+    vim
+    zellij
   ];
-
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
-  };
-
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. These will be explicitly sourced when using a
-  # shell provided by Home Manager. If you don't want to manage your shell
-  # through Home Manager then you have to manually source 'hm-session-vars.sh'
-  # located at either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/hakshu/etc/profile.d/hm-session-vars.sh
-  #
-  home.sessionVariables = {
-    # EDITOR = "emacs";
-  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
