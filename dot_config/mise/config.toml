@@ -1,0 +1,16 @@
+[tools]
+ruby = "3.3"
+pnpm = "11.5.0"
+bun = "latest"
+yarn = "1"
+deno = "2.0.2"
+rust = "latest"
+terraform = "1.9.8"
+node = "22"
+uv = "latest"
+python = "3.12"
+
+[settings]
+legacy_version_file_disable_tools = ["terraform"]
+idiomatic_version_file_enable_tools = ["node"]
+
