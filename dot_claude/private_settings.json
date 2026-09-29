@@ -1,4 +1,15 @@
 {
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "permissions": {
+    "allow": [
+      "Edit(/Users/hakshu/.local/share/chezmoi/**)",
+      "Write(/Users/hakshu/.local/share/chezmoi/**)"
+    ],
+    "disableBypassPermissionsMode": "disable"
+  },
+  "enableAllProjectMcpServers": false,
   "hooks": {
     "Notification": [
       {
@@ -7,6 +18,17 @@
           {
             "type": "command",
             "command": "terminal-notifier -title 'Claude Code' -message '呼んでるよ〜' -sound default"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "rtk hook claude"
           }
         ]
       }
@@ -24,11 +46,6 @@
     "Notion@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true
   },
-  "env": {
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
-  },
-  "enableAllProjectMcpServers": false,
-  "permissions": {
-    "disableBypassPermissionsMode": "disable"
-  }
+  "effortLevel": "xhigh",
+  "tui": "fullscreen"
 }
