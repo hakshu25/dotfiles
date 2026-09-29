@@ -29,8 +29,11 @@ function getWeather() {
     } catch (e) {}
   }
 
+  // Cache failures too, so offline refreshes don't block on curl every time.
+  // A failed fetch is retried after 1 minute instead of the full TTL.
   try {
-    if (weather) fs.writeFileSync(WEATHER_CACHE_FILE, JSON.stringify({ timestamp: Date.now(), weather }));
+    const timestamp = weather ? Date.now() : Date.now() - WEATHER_CACHE_TTL + 60 * 1000;
+    fs.writeFileSync(WEATHER_CACHE_FILE, JSON.stringify({ timestamp, weather }));
   } catch (e) {}
 
   return weather;
