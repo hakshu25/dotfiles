@@ -1,103 +1,85 @@
 # dotfiles
 
-[chezmoi](https://www.chezmoi.io/) で管理しているdotfilesリポジトリです。
+macOS (Apple Silicon) 用の dotfiles。役割分担は次のとおり。
 
-## 必要条件
-
-- macOS
-- [Homebrew](https://brew.sh/)
+| 対象 | 管理ツール |
+|------|-----------|
+| 設定ファイル | [chezmoi](https://www.chezmoi.io/) |
+| CLI ツール | [Nix](https://nixos.org/) + [Home Manager](https://github.com/nix-community/home-manager)（`home-manager/home.nix`） |
+| GUI アプリ・フォント・一部の依存 | [Homebrew](https://brew.sh/) + [brew-file](https://github.com/rcmdnk/homebrew-file)（`Brewfile`） |
+| 言語ランタイム（node, deno, python など） | [mise](https://mise.jdx.dev/)（`dot_config/mise/config.toml`） |
 
 ## セットアップ
 
-### 1. chezmoiのインストール
+Homebrew と Nix は `install.sh` が未インストールなら自動で入れる。
 
 ```bash
-brew install chezmoi
-```
+# 1. dotfiles を取得（chezmoi はワンショットで実行）
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init hakshu25
 
-### 2. dotfilesの取得と適用
-
-```bash
-# リポジトリをクローンして適用
-chezmoi init --apply <github-username>
-```
-
-### 3. 全体セットアップ（推奨）
-
-Makefileを使用して、パッケージのインストールからdotfilesの適用まで一括で実行できます。
-
-```bash
-chezmoi cd
+# 2. 全体セットアップ
+cd ~/.local/share/chezmoi
 make all
 ```
 
-#### 個別に実行する場合
+`make all` は次を順に実行する。個別に実行してもよい。
 
-```bash
-chezmoi cd
+| ターゲット | 内容 |
+|-----------|------|
+| `make install` | Homebrew・Nix のインストール、`Brewfile` の適用、`home-manager switch` |
+| `make init` | `chezmoi apply`、pre-commit フックの有効化、ログインシェルを fish に変更 |
+| `make install-fisher` | `fish_plugins` に書かれた fish プラグインをインストール |
+| `make install-vim-plug` | Vim プラグインをインストール |
+| `make install-nix` | `home-manager switch` だけを実行 |
 
-# パッケージのインストール（Homebrew）
-make install
+### 手動で必要な作業
 
-# dotfilesの適用
-make init
-
-# Fisherプラグインのインストール
-make install-fisher
-
-# vim-plugプラグインのインストール
-make install-vim-plug
-```
+- `herdr integration install`：Claude Code の herdr 連携フックを入れる（`~/.claude/hooks/` は管理外）
+- `gh auth login`：GitHub の認証
 
 ## 管理しているファイル
 
-| ファイル/ディレクトリ | 説明 |
-|----------------------|------|
-| `dot_config/fish/` | Fish shell設定 |
-| `dot_config/nvim/` | Neovim設定 |
-| `dot_config/ghostty/` | Ghosttyターミナル設定 |
-| `dot_config/starship.toml` | Starshipプロンプト設定 |
-| `dot_vimrc` | Vim設定 |
-| `dot_zshrc` | Zsh設定 |
-| `dot_zshenv` | Zsh環境変数 |
-| `dot_claude/` | Claude Code設定 |
-| `Brewfile` | Homebrewパッケージリスト |
+| ソース | 展開先 | 説明 |
+|--------|--------|------|
+| `dot_config/fish/` | `~/.config/fish/` | fish の設定・関数・`fish_plugins` |
+| `dot_config/nvim/` | `~/.config/nvim/` | Neovim（lazy.nvim） |
+| `dot_vimrc` | `~/.vimrc` | Vim（vim-plug） |
+| `dot_config/ghostty/` | `~/.config/ghostty/` | Ghostty |
+| `dot_config/zellij/` | `~/.config/zellij/` | Zellij |
+| `dot_config/aerospace/` | `~/.config/aerospace/` | AeroSpace（タイル型ウィンドウマネージャ） |
+| `dot_config/starship.toml` | `~/.config/starship.toml` | Starship プロンプト |
+| `dot_config/mise/` | `~/.config/mise/` | mise のグローバルツール |
+| `dot_gitconfig`, `dot_config/git/` | `~/.gitconfig`, `~/.config/git/` | Git の設定・グローバル ignore |
+| `dot_config/gh/` | `~/.config/gh/` | GitHub CLI（認証情報の `hosts.yml` は含めない） |
+| `dot_claude/` | `~/.claude/` | Claude Code の設定・スキル・statusline |
 
-## よく使うchezmoiコマンド
+リポジトリ専用で `$HOME` には展開しないもの（`.chezmoiignore`）:
+
+| ファイル | 説明 |
+|----------|------|
+| `flake.nix`, `flake.lock`, `home-manager/` | Nix / Home Manager の設定 |
+| `Brewfile` | Homebrew パッケージ |
+| `install.sh`, `Makefile` | セットアップ用スクリプト |
+| `.githooks/pre-commit` | コミット時に gitleaks で秘密情報を検査 |
+| `.github/workflows/` | 毎週 `flake.lock` を更新する PR を作成 |
+
+fish の `fish_variables` と fisher が入れるプラグイン本体は、マシンごとの状態なので管理しない。
+
+## よく使うコマンド
 
 ```bash
-# 変更を適用
+# 設定を編集して反映
+chezmoi edit ~/.config/fish/config.fish
 chezmoi apply
 
-# 差分を確認
+# ホーム側で変わったファイルをソースに取り込む
+chezmoi re-add ~/.claude/settings.json
+
+# ソースとホームの差分・状態
 chezmoi diff
+chezmoi status
 
-# ファイルを追加
-chezmoi add ~/.config/example
-
-# 管理対象ファイルを編集
-chezmoi edit ~/.config/example
-
-# ソースディレクトリに移動
-chezmoi cd
+# パッケージを更新（flake.lock を更新して適用）
+nix flake update
+home-manager switch --flake .
 ```
-
-## 主要なツール
-
-### シェル
-- Fish shell（デフォルト）
-- Zsh
-
-### ターミナル
-- Ghostty
-
-### エディタ
-- Neovim
-- Vim
-- Visual Studio Code
-
-### 開発ツール
-- mise（ランタイムバージョン管理）
-- ghq + peco（リポジトリ管理）
-- fzf（ファジー検索）
-- starship（プロンプト）
