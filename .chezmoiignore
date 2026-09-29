@@ -7,3 +7,11 @@ flake.nix
 flake.lock
 home-manager
 com.googlecode.iterm2.plist
+
+# Machine-local fish state
+.config/fish/fish_variables
+
+# Installed by fisher from fish_plugins; run `fisher update` instead
+.config/fish/conf.d/z.fish
+.config/fish/conf.d/done.fish
+.config/fish/functions/__z*.fish

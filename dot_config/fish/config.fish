@@ -1,12 +1,11 @@
-fish_add_path /usr/local/bin
-fish_add_path /opt/homebrew/bin
-fish_add_path $HOME/.deno/bin
-fish_add_path $HOME/.local/bin
+# Use -g so PATH stays in this file instead of leaking into fish_variables
+fish_add_path -g /usr/local/bin
+fish_add_path -g /opt/homebrew/bin
+fish_add_path -g $HOME/.deno/bin
+fish_add_path -g $HOME/.local/bin
+fish_add_path -g $HOME/Library/Android/sdk/platform-tools $HOME/Library/Android/sdk/emulator
 # for obsidian cli
-fish_add_path /Applications/Obsidian.app/Contents/MacOS
-set -g theme_display_git yes
-set -g theme_use_abbreviated_branch_name yes
-set -g theme_display_git_master_branch yes
+fish_add_path -g /Applications/Obsidian.app/Contents/MacOS
 
 # init
 starship init fish | source
@@ -31,4 +30,3 @@ alias gd='git diff'
 alias gb='git branch'
 alias gsw='git switch'
 alias gr='git restore'
-alias cc='claude --dangerously-skip-permissions'
