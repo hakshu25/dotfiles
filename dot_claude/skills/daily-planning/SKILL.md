@@ -2,7 +2,7 @@
 name: daily-planning
 description: >
   毎朝の一日プランニングを実行するスキル。コンディション確認 → Googleカレンダーの予定取得・空き時間算出 → Obsidianのタスク/プロジェクトからNext Actions確認 → 直近日報の繰り越しタスク収集 → ブログの仕掛かり確認 → 今日の日報ファイル生成、という流れを一括で行う。
-  「プランニングして」「今日の計画を立てて」「朝の確認をして」「daily planning」などと言われたら必ずこのスキルを使う。
+  「プランニングして」「今日の計画を立てて」「朝の確認をして」「daily planning」などと言われたらこのスキルを使う。
 ---
 
 # Daily Planning スキル
@@ -26,10 +26,11 @@ description: >
 # インストール確認
 which gws
 
-# 未インストールの場合
-brew install googleworkspace/tap/gws
-# または
-go install github.com/googleworkspace/cli/cmd/gws@latest
+# 未インストールの場合（npm パッケージ）
+npm install -g @googleworkspace/cli
+
+# 初回セットアップ
+gws auth setup
 
 # 初回認証
 gws auth login

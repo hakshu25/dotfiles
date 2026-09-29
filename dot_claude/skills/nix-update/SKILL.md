@@ -2,7 +2,7 @@
 name: nix-update
 description: >
   NixのflakeとHome Managerを使ってインストール済みのパッケージとhome-manager自体を更新するスキル。
-  「nixを更新して」「パッケージを更新して」「home-managerを更新して」「nix update」などと言われたら必ずこのスキルを使う。
+  「nixを更新して」「パッケージを更新して」「home-managerを更新して」「nix update」などと言われたらこのスキルを使う。
 ---
 
 # nix-update スキル

@@ -2,9 +2,9 @@
 name: chezmoi
 description: >
   chezmoiで管理されているdotfilesの追加・編集・確認を行うスキル。
-  設定ファイルを変更・追加する際は必ずこのスキルを使う。
+  設定ファイルを変更・追加する際に使う。
   「.zshrcを編集して」「fish configを変更して」「設定ファイルを追加して」「chezmoiに追加して」
-  「dotfilesを更新して」など、設定ファイルへの変更を伴う作業すべてでこのスキルを使う。
+  「dotfilesを更新して」など、設定ファイルへの変更を伴う作業で使う。
 ---
 
 # chezmoi スキル
@@ -90,6 +90,19 @@ conventional commitsに準拠する：
 - 設定の変更: `chore: update <tool> config`
 - スキル追加: `feat: add <name> skill`
 - ルール追加: `docs: add rule for <topic>`
+
+---
+
+## Claude Code が書き換えるファイル
+
+`~/.claude/settings.json` は Claude Code 自身も書き換える（`/effort`・`/model` が `modelSettings` を、`/auto-mode-setup` が `autoMode` を書き込む）。そのため source と食い違っていることがある。
+
+編集前に `chezmoi diff ~/.claude/settings.json` で差分を確認する。ホーム側にだけある変更は、source に取り込んでから編集する。取り込まずに `chezmoi apply` すると、その変更が消える。
+
+```bash
+# ホーム側の変更を source に取り込む
+chezmoi re-add ~/.claude/settings.json
+```
 
 ---
 
