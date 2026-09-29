@@ -133,7 +133,7 @@ created: 2026-09-21
 ### ステップ6: 入稿する
 
 1. 下書きの `## 本文` 以下を取り出し、`~/workspace/hakshu.blog/content/articles/{slug}.md` に書く。
-2. frontmatter はブログのスキーマに合わせる。`content.config.ts` の validate により **title / excerpt / date / readTime / image は文字列、tags は文字列配列が必須**。欠けるとビルドが落ちる。
+2. frontmatter はブログのスキーマに合わせる。`app/content/schema.ts` の Zod スキーマにより **title / excerpt / readTime / image は文字列、date は `YYYY-MM-DD` 形式の文字列、tags は文字列配列が必須**。欠けたり形が違ったりするとビルドが落ちる。
 
 ```markdown
 ---
@@ -152,10 +152,12 @@ image: ''
 - `readTime` は本文の文字数 ÷ 500 を切り上げて「N分」。
 - `tags` は2〜4個。既存記事のタグと表記を揃える。
 - `image` は使う画像がなければ空文字列 `''`。
+- 公開前の記事を置いておくときは `draft: true` を付ける。一覧・記事ページ・RSS のどれにも出なくなる。
+- 本文は MDX（`.md` モード）で変換される。生の HTML タグは描画されないので、Markdown の記法で書く。
 - `status`／`slug`／`type`／`source`／`created` はブログ側に持ち込まない。
 - Obsidian の `[[wikilink]]` が本文に残っていたら通常のリンクか地の文に直す。
 
-3. リポジトリでビルドして frontmatter の validate を通す（`content/articles/**/*.md` は `vp fmt` の対象外なので、記事の検証はビルドで行う）。
+3. リポジトリでビルドして frontmatter の検証を通す（`content/articles/**/*.md` は `vp fmt` の対象外なので、記事の検証はビルドで行う）。ビルドすると全ページが `build/client` に prerender される。見た目を確かめたいときは `vp run preview` で http://localhost:4173 を開く。
 
 ```bash
 cd ~/workspace/hakshu.blog
