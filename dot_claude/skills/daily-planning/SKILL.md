@@ -11,7 +11,7 @@ description: >
 
 ## 設定
 
-- **Vaultパス**: `/Users/hakshu/Library/Mobile Documents/iCloud~md~obsidian/Documents`
+- **Vaultパス**: `~/Library/Mobile Documents/iCloud~md~obsidian/Documents`
 - **日報フォルダ**: `{VAULT}/日報/`
 - **タスクファイル**: `{VAULT}/タスク.md`
 - **プロジェクトフォルダ**: `{VAULT}/プロジェクト/`
@@ -95,7 +95,7 @@ MTG合計: 2時間
 タスクファイルとプロジェクトファイルを読み込んで、進行中タスクと期限を表示する。
 
 ```bash
-VAULT="/Users/hakshu/Library/Mobile Documents/iCloud~md~obsidian/Documents"
+VAULT="$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents"
 
 # タスクファイルを読む
 cat "${VAULT}/タスク.md"
@@ -130,7 +130,7 @@ ls "${VAULT}/プロジェクト/" 2>/dev/null && \
 直近5日分の日報から「明日に繰り越し」セクションの未完了タスクを拾う。
 
 ```bash
-VAULT="/Users/hakshu/Library/Mobile Documents/iCloud~md~obsidian/Documents"
+VAULT="$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents"
 DAILY_DIR="${VAULT}/日報"
 
 # 直近5ファイルを日付降順で取得
@@ -158,7 +158,7 @@ ls -t "${DAILY_DIR}"/*.md 2>/dev/null | head -5
 仕掛かり中のブログ下書きと、その次の一手を表示する。
 
 ```bash
-VAULT="/Users/hakshu/Library/Mobile Documents/iCloud~md~obsidian/Documents"
+VAULT="$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents"
 
 # status が published 以外の下書き
 grep -L "^status: published" "${VAULT}/ブログ/drafts/"*.md 2>/dev/null

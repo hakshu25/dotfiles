@@ -11,7 +11,7 @@ description: >
 
 ## 設定
 
-- **Vaultパス**: `/Users/hakshu/Library/Mobile Documents/iCloud~md~obsidian/Documents`
+- **Vaultパス**: `~/Library/Mobile Documents/iCloud~md~obsidian/Documents`
 - **ネタ帳**: `{VAULT}/ブログ/ネタ帳.md`
 - **下書きフォルダ**: `{VAULT}/ブログ/drafts/`
 - **ブログリポジトリ**: `~/workspace/hakshu.blog`
@@ -38,7 +38,7 @@ description: >
 ### ステップ0: 再開か新規かを決める
 
 ```bash
-VAULT="/Users/hakshu/Library/Mobile Documents/iCloud~md~obsidian/Documents"
+VAULT="$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents"
 grep -L "^status: published" "$VAULT/ブログ/drafts/"*.md 2>/dev/null
 ```
 

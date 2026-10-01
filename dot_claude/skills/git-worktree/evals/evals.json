@@ -4,21 +4,21 @@
     {
       "id": 1,
       "name": "create-worktree",
-      "prompt": "hakshu.blogリポジトリ（/Users/hakshu/workspace/hakshu.blog）で作業中です。ブログにタグフィルタリング機能を追加したい。worktreeを使って作業を始めてください。",
+      "prompt": "hakshu.blogリポジトリ（~/workspace/hakshu.blog）で作業中です。ブログにタグフィルタリング機能を追加したい。worktreeを使って作業を始めてください。",
       "expected_output": "正しいディレクトリ規則（../worktrees/hakshu.blog/feature/...）でworktreeを作成し、作業ディレクトリをworktree内に切り替える",
       "files": []
     },
     {
       "id": 2,
       "name": "pr-checkout",
-      "prompt": "hakshu.blogリポジトリ（/Users/hakshu/workspace/hakshu.blog）で作業中です。PR #1 をworktreeでチェックアウトして内容を確認したい。",
+      "prompt": "hakshu.blogリポジトリ（~/workspace/hakshu.blog）で作業中です。PR #1 をworktreeでチェックアウトして内容を確認したい。",
       "expected_output": "gh pr viewでブランチ名を取得し、git fetchしてからworktreeを作成する。../worktrees/hakshu.blog/pr-1 に配置される",
       "files": []
     },
     {
       "id": 3,
       "name": "cleanup",
-      "prompt": "hakshu.blogリポジトリ（/Users/hakshu/workspace/hakshu.blog）で作業中です。feature/tag-filterブランチの実装が完了してmainにマージされました。このworktreeとブランチを削除してください。",
+      "prompt": "hakshu.blogリポジトリ（~/workspace/hakshu.blog）で作業中です。feature/tag-filterブランチの実装が完了してmainにマージされました。このworktreeとブランチを削除してください。",
       "expected_output": "削除前に確認を取り、git worktree removeとgit branch -dを実行する。未マージの場合は-Dを使う前に警告する",
       "files": []
     }

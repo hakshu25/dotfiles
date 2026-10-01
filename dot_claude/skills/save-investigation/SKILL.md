@@ -11,7 +11,7 @@ description: >
 
 ## 設定
 
-- **Vault パス**: `/Users/hakshu/Library/Mobile Documents/iCloud~md~obsidian/Documents`
+- **Vault パス**: `~/Library/Mobile Documents/iCloud~md~obsidian/Documents`
 - **保存先フォルダ**: `{VAULT}/調査ログ/`
 
 ---

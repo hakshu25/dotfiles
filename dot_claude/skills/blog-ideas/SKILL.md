@@ -12,7 +12,7 @@ description: >
 
 ## 設定
 
-- **Vaultパス**: `/Users/hakshu/Library/Mobile Documents/iCloud~md~obsidian/Documents`
+- **Vaultパス**: `~/Library/Mobile Documents/iCloud~md~obsidian/Documents`
 - **ネタ帳**: `{VAULT}/ブログ/ネタ帳.md`
 - **下書きフォルダ**: `{VAULT}/ブログ/drafts/`
 - **ブログリポジトリ**: `~/workspace/hakshu.blog`（公開済み記事は `content/articles/*.md`）
@@ -26,7 +26,7 @@ description: >
 直近7日間に更新されたノートを対象にする。
 
 ```bash
-VAULT="/Users/hakshu/Library/Mobile Documents/iCloud~md~obsidian/Documents"
+VAULT="$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents"
 find "$VAULT" -name "*.md" -mtime -7 \
   -not -path "*/.obsidian/*" -not -path "*/ブログ/*" -not -path "*/Templates/*"
 ```
