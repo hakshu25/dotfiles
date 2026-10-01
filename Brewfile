@@ -11,8 +11,6 @@ brew libpq
 brew luajit
 brew luarocks
 
-tap homebrew/services
-
 tap dominion525/tap
 cask dominion525/tap/cmd-eikana
 
