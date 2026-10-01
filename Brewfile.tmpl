@@ -1,4 +1,4 @@
-
+# Rendered by chezmoi (see .chezmoi.toml.tmpl); branch on .machine for per-machine packages
 # tap repositories and their packages
 # Note: CLI tools are managed by Nix (home-manager)
 # Note: language runtimes and global npm/cargo tools are managed by mise
@@ -11,16 +11,23 @@ brew libpq
 brew luajit
 brew luarocks
 
-tap dominion525/tap
-cask dominion525/tap/cmd-eikana
-
 tap felixkratz/formulae
-
-tap nikitabobko/tap
-cask aerospace
 
 tap rcmdnk/file
 brew brew-file
+
+cask font-fira-code-nerd-font
+cask font-monaspace
+cask font-moralerspace
+cask ghostty
+{{- if eq .machine "personal" }}
+
+# personal only: casks and App Store apps are not installed on work machines by default
+tap dominion525/tap
+cask dominion525/tap/cmd-eikana
+
+tap nikitabobko/tap
+cask aerospace
 
 tap homebrew/cask
 cask alt-tab
@@ -32,11 +39,7 @@ cask coteditor
 cask craft
 cask discord
 cask figma
-cask font-fira-code-nerd-font
-cask font-monaspace
-cask font-moralerspace
 cask gcloud-cli
-cask ghostty
 cask google-chrome
 cask google-drive
 cask google-japanese-ime
@@ -64,3 +67,8 @@ appstore 462054704 Microsoft Word
 appstore 409203825 Numbers
 appstore 409201541 Pages
 appstore 497799835 Xcode
+{{- end }}
+{{- if eq .machine "work" }}
+
+# work only
+{{- end }}

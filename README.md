@@ -15,6 +15,7 @@ Homebrew と Nix は `install.sh` が未インストールなら自動で入れ�
 
 ```bash
 # 1. dotfiles を取得（chezmoi はワンショットで実行）
+#    マシンの用途（personal / work）を聞かれる
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init hakshu25
 
 # 2. 全体セットアップ
@@ -26,11 +27,20 @@ make all
 
 | ターゲット | 内容 |
 |-----------|------|
-| `make install` | Homebrew・Nix のインストール、`Brewfile` の適用、`home-manager switch` |
+| `make install` | Homebrew・Nix のインストール、`home-manager switch`、`Brewfile.tmpl` の適用 |
 | `make init` | `chezmoi apply`、pre-commit フックの有効化、ログインシェルを fish に変更 |
 | `make install-fisher` | `fish_plugins` に書かれた fish プラグインをインストール |
 | `make install-vim-plug` | Vim プラグインをインストール |
 | `make install-nix` | `home-manager switch` だけを実行 |
+
+### マシンごとのパッケージ
+
+`chezmoi init` で選んだ用途は `~/.config/chezmoi/chezmoi.toml` の `data.machine` に保存され、次の 2 つがこれを読む。
+
+- `Brewfile.tmpl`：`{{ if eq .machine "work" }}` などで分岐する
+- `home-manager/home.nix`：`lib.optionals (machine == "work") [ ... ]` に追加する
+
+用途を変えるときは `chezmoi edit-config` で `data.machine` を書き換える（一度保存すると `chezmoi init` では聞き直されない）。
 
 ### 手動で必要な作業
 
@@ -58,7 +68,7 @@ make all
 | ファイル | 説明 |
 |----------|------|
 | `flake.nix`, `flake.lock`, `home-manager/` | Nix / Home Manager の設定 |
-| `Brewfile` | Homebrew パッケージ |
+| `Brewfile.tmpl` | Homebrew パッケージ（`install.sh` が chezmoi で展開して適用） |
 | `install.sh`, `Makefile` | セットアップ用スクリプト |
 | `.githooks/pre-commit` | コミット時に gitleaks で秘密情報を検査 |
 | `.github/workflows/` | 毎週 `flake.lock` を更新する PR を作成 |

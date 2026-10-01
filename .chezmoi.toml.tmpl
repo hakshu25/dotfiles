@@ -1,0 +1,4 @@
+{{- /* Asked once on `chezmoi init`; Brewfile.tmpl and flake.nix branch on it. */ -}}
+{{- $machine := promptChoiceOnce . "machine" "Machine type" (list "personal" "work") -}}
+[data]
+  machine = {{ $machine | quote }}
