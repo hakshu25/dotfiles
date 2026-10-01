@@ -53,7 +53,7 @@ nix flake update home-manager
 cd ~/.local/share/chezmoi
 
 # 実際に適用する前にビルドだけ試す（dry-run）
-nix build .#homeConfigurations.hakshu.activationPackage --dry-run
+nix build ".#homeConfigurations.$USER.activationPackage" --dry-run --impure
 ```
 
 ### ステップ4: Home Manager を適用
@@ -62,7 +62,7 @@ nix build .#homeConfigurations.hakshu.activationPackage --dry-run
 cd ~/.local/share/chezmoi
 
 # 更新した設定を反映（パッケージのインストール・更新を含む）
-home-manager switch --flake .
+home-manager switch --flake . --impure
 ```
 
 ### ステップ5: 変更をコミット・プッシュ
@@ -84,7 +84,7 @@ git push
 ```bash
 cd ~/.local/share/chezmoi && \
   nix flake update && \
-  home-manager switch --flake . && \
+  home-manager switch --flake . --impure && \
   git add flake.lock && \
   git commit -m "chore: update nixpkgs and home-manager flake inputs" && \
   git push
@@ -99,7 +99,7 @@ nix flake update
 nix flake metadata  # 変更されたinputsを確認
 
 # 2. 問題なければhome-manager適用
-home-manager switch --flake .
+home-manager switch --flake . --impure
 
 # 3. コミット
 git add flake.lock
@@ -115,7 +115,7 @@ git push
 
 ```bash
 # エラーログを詳細表示
-home-manager switch --flake . --show-trace
+home-manager switch --flake . --impure --show-trace
 ```
 
 ### 更新を元に戻したい場合
@@ -127,7 +127,7 @@ git checkout flake.lock
 
 # 前のgenerationに戻す
 home-manager generations  # 一覧表示
-home-manager switch --flake . --rollback
+home-manager switch --flake . --impure --rollback
 ```
 
 ### nix コマンドが見つからない場合

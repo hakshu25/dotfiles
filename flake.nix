@@ -1,5 +1,5 @@
 {
-  description = "Home Manager configuration of hakshu";
+  description = "Home Manager configuration";
 
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
@@ -15,17 +15,24 @@
     let
       system = "aarch64-darwin";
       pkgs = nixpkgs.legacyPackages.${system};
+      # Read the current user from the environment so the same flake works on
+      # machines with different usernames. Requires `--impure`.
+      username = builtins.getEnv "USER";
+      homeDirectory = builtins.getEnv "HOME";
     in
+    assert nixpkgs.lib.assertMsg (username != "" && homeDirectory != "")
+      "USER/HOME are empty. Run with --impure (e.g. `home-manager switch --flake . --impure`).";
     {
-      homeConfigurations."hakshu" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
-        modules = [ ./home-manager/home.nix ];
-
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
+        modules = [
+          ./home-manager/home.nix
+          {
+            home.username = username;
+            home.homeDirectory = homeDirectory;
+          }
+        ];
       };
     };
 }

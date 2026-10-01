@@ -25,4 +25,4 @@ fi
 
 # home-manager
 echo "==> Running home-manager switch..."
-nix run home-manager/master -- switch --flake .
+nix run home-manager/master -- switch --flake . --impure

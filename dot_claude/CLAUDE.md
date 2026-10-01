@@ -11,7 +11,7 @@
 # Package Management
 - This system uses Nix home-manager (not Homebrew) for package management
 - Programming language runtimes (node, deno, python, etc.) are managed by mise — do NOT add them to nix configs
-- After modifying home-manager config, run `home-manager switch` to apply, then commit
+- After modifying home-manager config, run `home-manager switch --flake ~/.local/share/chezmoi --impure` to apply, then commit
 
 # Dotfiles
 - Dotfiles are managed via chezmoi — edit source files in the chezmoi source dir, not the deployed locations

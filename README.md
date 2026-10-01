@@ -81,5 +81,5 @@ chezmoi status
 
 # パッケージを更新（flake.lock を更新して適用）
 nix flake update
-home-manager switch --flake .
+home-manager switch --flake . --impure
 ```

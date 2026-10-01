@@ -1,8 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  home.username = "hakshu";
-  home.homeDirectory = "/Users/hakshu";
+  # home.username and home.homeDirectory are set in flake.nix from $USER/$HOME.
 
   # Do not change this even when updating Home Manager.
   # Read the Home Manager release notes before bumping it.

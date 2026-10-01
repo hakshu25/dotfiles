@@ -16,7 +16,7 @@ install:
 
 install-nix:
 	@echo '==> Running home-manager switch...'
-	home-manager switch --flake .
+	home-manager switch --flake . --impure
 
 init:
 	@echo '==> Applying dotfiles with chezmoi...'
