@@ -29,11 +29,38 @@ require("lazy").setup({
       priority = 1000, -- Ensure it loads first
     },
     { import = "plugins" },
-    {"nvim-treesitter/nvim-treesitter", branch = 'master', lazy = false, build = ":TSUpdate"},
-    { 'neoclide/coc.nvim', branch = 'release', },
+    {
+      'neoclide/coc.nvim',
+      branch = 'release',
+      init = function()
+        -- Installed automatically on startup if missing
+        vim.g.coc_global_extensions = {
+          'coc-json',
+          'coc-tsserver',
+          '@yaegassy/coc-volar',
+          'coc-rust-analyzer',
+        }
+      end,
+    },
     { 'nvim-telescope/telescope.nvim', tag = '0.1.8', dependencies = { 'nvim-lua/plenary.nvim' } },
     { 'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },
-    {'akinsho/toggleterm.nvim', version = "*", config = true},
+    {
+      'akinsho/toggleterm.nvim',
+      version = "*",
+      opts = {
+        size = 20,
+        open_mapping = [[<c-j>]],  -- Ctrl+j でトグル
+        shading_factor = 2,
+        direction = 'float',  -- 'vertical' | 'horizontal' | 'tab' | 'float'
+        float_opts = {
+          border = 'curved',
+          highlights = {
+            border = "Normal",
+            background = "Normal",
+          },
+        },
+      },
+    },
     {
   "coder/claudecode.nvim",
   dependencies = { "folke/snacks.nvim" },

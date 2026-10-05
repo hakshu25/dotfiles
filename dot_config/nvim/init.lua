@@ -1,8 +1,3 @@
--- Set <space> as the leader key
--- See `:help mapleader`
--- NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
-vim.g.mapleader = ' '
-
 -- [[ Setting options ]] See `:h vim.o`
 -- NOTE: You can change these options as you wish!
 -- For more options, you can see `:help option-list`
@@ -96,18 +91,21 @@ vim.cmd("colorscheme onedark")
 
 vim.keymap.set('n', '<C-p>', ':NvimTreeToggle<CR>', { silent = true })
 
+-- 設定は chezmoi で管理しているので、展開先ではなくソース側を開く
+local config_source = '~/.local/share/chezmoi/dot_config/nvim'
+
 -- 設定ファイルを開くコマンド
 vim.api.nvim_create_user_command('Config', function()
-  vim.cmd('edit ~/.config/nvim/init.lua')
+  vim.cmd('edit ' .. config_source .. '/init.lua')
 end, {})
 
 -- 設定ディレクトリを開く
 vim.api.nvim_create_user_command('ConfigDir', function()
-  vim.cmd('edit ~/.config/nvim/')
+  vim.cmd('edit ' .. config_source .. '/')
 end, {})
 
 -- キーマップでも設定
-vim.keymap.set('n', '<leader>c', ':edit ~/.config/nvim/init.lua<CR>', { desc = 'Open config file' })
+vim.keymap.set('n', '<leader>c', '<cmd>Config<CR>', { desc = 'Open config file' })
 
 function _G.check_back_space()
   local col = vim.fn.col('.') - 1
@@ -156,22 +154,7 @@ vim.keymap.set("n", "]g", "<Plug>(coc-diagnostic-next)", {silent = true})
 -- Enterで補完を確定
 vim.keymap.set("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], {silent = true, noremap = true, expr = true, replace_keycodes = false})
 
--- Telescope setup
-require('telescope').setup({
-  defaults = {
-    -- ripgrepが必要: brew install ripgrep
-    vimgrep_arguments = {
-      'rg',
-      '--color=never',
-      '--no-heading',
-      '--with-filename',
-      '--line-number',
-      '--column',
-      '--smart-case'
-    },
-  },
-})
-
+-- Telescope（live_grep は Nix で入れた ripgrep を使う）
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
@@ -185,34 +168,7 @@ vim.keymap.set('n', '<leader>gs', builtin.git_status, { desc = 'Git status' })
 
 require('lualine').setup()
 
-require("toggleterm").setup{
-  size = 20,
-  open_mapping = [[<c-j>]],  -- Ctrl+j でトグル
-  start_in_insert = true,
-  hide_numbers = true,
-  shade_filetypes = {},
-  shade_terminals = true,
-  shading_factor = 2,
-  start_in_insert = true,
-  insert_mappings = true,
-  terminal_mappings = true,
-  persist_size = true,
-  direction = 'float',  -- 'vertical' | 'horizontal' | 'tab' | 'float'
-  close_on_exit = true,
-  shell = vim.o.shell,
-  float_opts = {
-    border = 'curved',
-    winblend = 0,
-    highlights = {
-      border = "Normal",
-      background = "Normal",
-    }
-  }
-}
-
--- カスタムキーマップ
-local Terminal = require('toggleterm.terminal').Terminal
-
+-- toggleterm のカスタムキーマップ（設定は lua/config/lazy.lua）
 -- フロートターミナル
 vim.keymap.set('n', '<leader>tf', function()
   require("toggleterm").toggle(1, nil, nil, 'float')
@@ -227,7 +183,3 @@ end, { desc = 'Toggle horizontal terminal' })
 vim.keymap.set('n', '<leader>tv', function()
   require("toggleterm").toggle(3, vim.o.columns * 0.4, nil, 'vertical')
 end, { desc = 'Toggle vertical terminal' })
-
-vim.keymap.set('t', '<C-j>', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
--- ターミナルから簡単に抜ける方法
-vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { desc = 'Exit terminal mode' })
