@@ -31,6 +31,7 @@
       gitleaks
       gnupg
       hyperfine
+      imagemagick
       jq
       just
       lazygit

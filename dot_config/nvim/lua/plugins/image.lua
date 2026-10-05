@@ -4,7 +4,8 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   opts = {
     backend = "kitty",
-    processor = "magick_rock",
+    -- Use the ImageMagick CLI; the magick luarock cannot find libMagickWand without pkg-config
+    processor = "magick_cli",
     integrations = {
       markdown = {
         enabled = true,

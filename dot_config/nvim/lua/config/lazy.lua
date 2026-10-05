@@ -64,4 +64,6 @@ require("lazy").setup({
   -- install = { colorscheme = { "habamax" } },
   -- automatically check for plugin updates
   checker = { enabled = true },
+  -- No plugin needs luarocks (image.nvim uses the magick CLI instead of the magick rock)
+  rocks = { enabled = false },
 })
